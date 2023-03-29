@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app/css/bootstrap.css' %}">
+    <title>Movie</title>
+</head>
+<body>
+    <div class="container-fluid">
+    <!--Create Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark alert bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">IMBD</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'add_movie' %}">Add New Movie</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'show_movies' %}">Show Movies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">About</a>
+        </li>
+      </ul>
+      <form class="d-flex ml-auto" action="/search" method="POST" novalidate>
+      {% csrf_token %}
+        <input class="form-control me-2" name="name" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-success ml-2" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+    <!--End Navbar code-->
+        {% block content %}{% endblock content %}
+    </div>
+    
+
+
+    <script src="{% static 'crud/js/jquery.js' %}"></script>
+    <script src="{% static 'crud/js/bootstrap.js' %}"></script>
+    <script src="{% static 'crud/js/propper.js' %}"></script>
+</body>
+</html>

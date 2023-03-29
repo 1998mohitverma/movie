@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-10 offset-1">
+            <div class="jumbotron">
+                <h2 class="text-center">Movie Application</h2>
+            </div>
+            <!-- Button to Open the Modal -->
+<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">
+  Version of Django and python
+</button>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Version of technoloy used in this project</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <p>python version == 3.9.5</p>
+    <p>django version == 3.0</p>
+    <p>pip version == 21.2.4</p>
+    <p>Virtual env name == crud2</p>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+        </div>
+    </div>
+{% endblock content %}

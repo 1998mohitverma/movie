@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-12">
+        <h3 class="text-center alert alert-danger">Searching Movies from IMDB Site</h3>
+        {% if movie %}
+            <table class="table table-hover table-resposive-sm">
+                <thead>
+                    <tr>
+                         <th scope="col">Movie Name</th>
+                         <th scope="col">Actor Name</th>
+                         <th scope="col">Director Name</th>
+                         <th scope="col">Poster</th>
+                         <th scope="col">Release Year</th>
+                         <th scope="col">Movie Rating</th>
+                    </tr>
+               </thead>
+               <tbody>
+                <tr>
+                    <td>{{movie.movie_name}}</td>
+                    <td>{{movie.actor_name}}</td>
+                    <td>{{movie.director_name}}</td>
+                    <!-- <td><a href="{{movie.thumbnail}}">{{movie.thumbnail | truncatechars:50}}</a></td> -->
+                    <td><img src="{{ movie.thumbnail }}" alt="{{ movie.movie_name }} thumbnail"></td>
+                    <td>{{movie.release_year}}</td>
+                    <td>{{movie.movie_rating}}</td>
+               </tbody>
+            </table>
+            <br>
+        {% else %}
+            <h1 class="alert alert-success text-center">you need to right correct movie name</h1>    
+        {% endif %}    
+        </div>
+    </div>
+{% endblock content %}

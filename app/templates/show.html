@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-12">
+         <h3 class="text-center alert alert-danger">List of Movies</h3>
+         {% if stu %}
+            <table class="table table-hover table-resposive-sm">
+              <thead>
+                   <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Movie Name</th>
+                        <th scope="col">Director Name</th>
+                        <th scope="col">Release Year</th>
+                        <th scope="col">Movie Rating</th>
+                        <th scope="col">Action</th>
+                   </tr>
+              </thead>
+              <tbody>
+                {% for st in stu %}
+                    <tr>
+                        <th scope="row">{{st.id}}</th>
+                        <td>{{st.movie_name}}</td>
+                        <td>{{st.director_name}}</td>
+                        <td>{{st.release_year}}</td>
+                        <td>{{st.movie_rating}}</td>
+                        <td>
+                            <a href="{% url 'update_movie' st.id %}" class="btn btn-warning btn-sm">Edit</a>
+                            <form action="{% url 'delete_movie' st.id %}" method="POST" novalidate class="d-inline">
+                            {% csrf_token %}
+                            <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+         {% else %}
+         <h1 class="alert alert-success text-center">no Records</h1>
+         {% endif %}
+        </div>
+    </div>
+{% endblock content %}
